@@ -1,0 +1,103 @@
+body{margin:0;background:#f8f2ea}
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:#fdf2f6}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#ffc2dc,#ff8fbf 50%,#e0528a);border-radius:999px;border:3px solid #fdf2f6}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#ff8fbf,#e0528a)}
+::-webkit-scrollbar-corner{background:#fdf2f6}
+@supports not selector(::-webkit-scrollbar){html,*{scrollbar-width:thin;scrollbar-color:#ff8fbf #fdf2f6}}
+*{box-sizing:border-box}
+a{color:inherit}a:hover{color:inherit}
+img{max-width:100%}
+
+/* backgrounds */
+.silk{background-color:#4a1430;background-image:radial-gradient(rgba(242,196,107,.10) 1px,transparent 1.4px);background-size:22px 22px}
+.lilac{background-color:#fdf2f6;background-image:radial-gradient(circle at 8% 10%,rgba(255,190,214,.45),transparent 28%),radial-gradient(circle at 92% 40%,rgba(233,220,246,.6),transparent 30%),radial-gradient(circle at 20% 85%,rgba(255,214,228,.5),transparent 30%),radial-gradient(rgba(74,20,48,.05) 1px,transparent 1.4px);background-size:auto,auto,auto,22px 22px}
+
+/* load + loop animations */
+.up{animation:up .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.shine{background:linear-gradient(100deg,#ff8fbf 0%,#ffe0ec 25%,#ff8fbf 50%,#ffc2dc 75%,#ff8fbf 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite}
+@keyframes shine{to{background-position:-200% 0}}
+.fan1{animation:f1 7s ease-in-out infinite}
+.fan2{animation:f2 8s ease-in-out infinite}
+.fan3{animation:f3 9s ease-in-out infinite}
+@keyframes f1{0%,100%{transform:rotate(-7deg) translateY(0)}50%{transform:rotate(-5deg) translateY(-10px)}}
+@keyframes f2{0%,100%{transform:rotate(5deg) translateY(0)}50%{transform:rotate(6.5deg) translateY(-12px)}}
+@keyframes f3{0%,100%{transform:rotate(-1.5deg) translateY(0)}50%{transform:rotate(0deg) translateY(-8px)}}
+.bob{animation:bob 4.5s ease-in-out infinite}
+.bob2{animation:bob 5.5s ease-in-out -2s infinite}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(2deg)}}
+.twinkle{animation:tw 3s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.15;transform:scale(.6)}50%{opacity:1;transform:scale(1)}}
+.spin{animation:spin 18s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.run{display:flex;gap:22px;width:max-content;animation:run 80s linear infinite}
+@keyframes run{to{transform:translateX(-50%)}}
+.ribbon{-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.ribbon:hover .run{animation-play-state:paused}
+
+.sway1{animation:sw1 6s ease-in-out infinite}
+.sway2{animation:sw2 7s ease-in-out infinite}
+.sway3{animation:sw3 8s ease-in-out infinite}
+@keyframes sw1{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(-4deg) translateY(-6px)}}
+@keyframes sw2{0%,100%{transform:rotate(6deg)}50%{transform:rotate(3deg) translateY(-8px)}}
+@keyframes sw3{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(1deg) translateY(-5px)}}
+.spin-slow{animation:spin 14s linear infinite}
+.draw path{stroke-dasharray:420;stroke-dashoffset:420;animation:draw 1.4s .8s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.wob:hover{animation:wob .5s ease-in-out}
+@keyframes wob{0%,100%{transform:rotate(0)}25%{transform:rotate(-3deg)}75%{transform:rotate(3deg)}}
+.thread{position:absolute;left:0;top:0;z-index:0;pointer-events:none;overflow:visible}
+.thread .pulse{animation:pulse 1.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pulse{0%,100%{opacity:.7;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
+/* interactions */
+.btn{transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 14px 28px -12px rgba(0,0,0,.45)}
+.frame{transition:transform .6s cubic-bezier(.2,.8,.2,1),box-shadow .6s}
+.stage:hover .frame{transform:rotate(0deg) scale(1.02)!important;box-shadow:0 50px 90px -40px rgba(74,20,48,.6)}
+.card{transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s}
+.card:hover{transform:translateY(-6px);box-shadow:0 30px 50px -30px rgba(74,20,48,.45)}
+.btn:focus-visible,.sw:focus-visible,a:focus-visible{outline:3px solid #ff8fbf;outline-offset:4px}
+
+/* before/after switch */
+.sw{cursor:pointer;position:relative;border:0;padding:4px;border-radius:999px;background:#ffffff;box-shadow:0 10px 24px -10px rgba(74,20,48,.45);display:flex;font:700 13px Manrope,sans-serif}
+.sw .knob{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:999px;background:#4a1430;transition:transform .45s cubic-bezier(.5,1.6,.4,1)}
+.sw.on .knob{transform:translateX(100%)}
+.sw .lab{position:relative;z-index:1;min-width:96px;min-height:40px;display:flex;align-items:center;justify-content:center;padding:0 12px;transition:color .3s;color:#4a1430}
+.sw .l1{color:#f8f2ea}
+.sw.on .l1{color:#4a1430}
+.sw.on .l2{color:#f8f2ea}
+.before{position:absolute;inset:0;opacity:0;transform:scale(1.04);filter:blur(6px);transition:opacity .6s,transform .7s cubic-bezier(.2,.8,.2,1),filter .6s;pointer-events:none}
+.before.on{opacity:1;transform:none;filter:none}
+.after{transition:transform .7s cubic-bezier(.2,.8,.2,1),filter .6s}
+.after.off{transform:scale(.97);filter:saturate(.3) blur(2px)}
+.cq{container-type:inline-size}
+
+/* scroll-driven reveals */
+@supports (animation-timeline: view()) {
+  .rv{animation:rv linear both;animation-timeline:view();animation-range:entry 0% entry 75%}
+  .rv-l{animation:rvl linear both;animation-timeline:view();animation-range:entry 0% entry 75%}
+  .rv-r{animation:rvr linear both;animation-timeline:view();animation-range:entry 0% entry 75%}
+  .rv-z{animation:rvz linear both;animation-timeline:view();animation-range:entry 0% entry 75%}
+  .par{animation:par linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+  .bar{position:fixed;top:0;left:0;right:0;height:3px;z-index:50;background:linear-gradient(90deg,#ff8fbf,#d0457f);transform-origin:0 50%;animation:grow linear both;animation-timeline:scroll()}
+}
+@keyframes rv{from{opacity:0;transform:translateY(70px)}to{opacity:1;transform:none}}
+@keyframes rvl{from{opacity:0;transform:translateX(-90px) rotate(-5deg)}to{opacity:1;transform:none}}
+@keyframes rvr{from{opacity:0;transform:translateX(90px) rotate(5deg)}to{opacity:1;transform:none}}
+@keyframes rvz{from{opacity:0;transform:scale(.86)}to{opacity:1;transform:none}}
+@keyframes par{from{transform:translateY(60px)}to{transform:translateY(-60px)}}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* phone */
+@media (max-width: 720px){
+  .navlink{display:none!important}
+  .hide-sm{display:none!important}
+  .sw .lab{min-width:84px}
+}
+@media (prefers-reduced-motion: reduce){
+  .draw path{stroke-dashoffset:0!important}
+  .thread .pulse,.up,.shine,.fan1,.fan2,.fan3,.sway1,.sway2,.sway3,.spin-slow,.draw path,.bob,.bob2,.twinkle,.spin,.run,.silk::before,.rv,.rv-l,.rv-r,.rv-z,.par{animation:none!important}
+  .frame,.card,.btn,.before,.after,.sw .knob{transition:none}
+}
+html{scroll-behavior:smooth}
