@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Eventlybuilt by Funbi",
   description:
     "Event websites, digital IVs, aso-ebi order pages, forms and menus that turn boring into fun. Built in Abuja, delivered in 3–7 days.",
-  metadataBase: new URL("https://eventlybuilt.vercel.app"),
+  metadataBase: new URL("https://eventlybuilt-portfolio.vercel.app"),
   openGraph: {
     title: "Eventlybuilt by Funbi",
     description: "From boring to fun: event websites, IVs, forms and menus.",
